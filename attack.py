@@ -68,7 +68,7 @@ class Attacker(object):
 			if serverStatus == '空闲':
 				self.log.info('开始争夺')
 				attackRes = self.attack()
-				self.log.info(attackRes)
+				#self.log.info(attackRes)
 				if attackRes == 'no':
 					break
 				m = re.finditer(r'<li((?!</li>).)*</li>', attackRes)
