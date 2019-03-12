@@ -79,6 +79,8 @@ if __name__ == '__main__':
 		useItemType = dictRetVal(signleConfig, 'useItemType')
 		sellItemType = dictRetVal(signleConfig, 'sellItemType')
 		buyExp = dictRetVal(signleConfig, 'buyExp')
+		if username is None or password is None:
+			continue
 		userTask = UserTask(username=username, password=password, 
 			openBoxType=openBoxType, smeltEquipType=smeltEquipType, 
 			useItemType=useItemType, sellItemType=sellItemType, buyExp=buyExp)
