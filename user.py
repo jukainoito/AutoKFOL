@@ -13,6 +13,9 @@ class User:
 
 	__SAFEID_PAGE = 'https://2dkf.com/kf_fw_ig_index.php'
 
+
+	__SM_PAGE = 'https://2dkf.com/kf_growup.php'
+
 	def __init__(self, username, password, log = None):
 		self.loginStatus = False
 		self._safeid = None
@@ -64,6 +67,15 @@ class User:
 
 	def reloadSafeid(self):
 		self._safeid = self.getSafeid()
+
+	def getSM(self):
+		self.log.info('--开始获取神秘系数--')
+		res = self.req.get(self. __SM_PAGE)
+		htmlTree = etree.HTML(res)
+		sm = ''.join(htmlTree.xpath('//*[@id="alldiv"]/div[4]/div[2]/div[1]/div[1]/text()'))
+		sm = re.search('.*神秘系数\s(\d*).*', sm).group(1)
+		self.log.info('--成功获取神秘系数:' + sm +'--')
+		return int(sm)
 
 	@property
 	def safeid(self, force=False):

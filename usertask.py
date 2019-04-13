@@ -49,21 +49,21 @@ class UserTask(object):
 
 	def task(self):
 		while self.run:
-			while self.attacker.autoAttack() is not True:
-				self.run = False
-				break
-				# self.log.info('睡眠到明日0点...')
-				# today = datetime.date.today()
-				# tomorrow = today + datetime.timedelta(days=1)
-				# tomorrowTimestamp = int(time.mktime(time.strptime(str(tomorrow), '%Y-%m-%d')))
-				# nowTimestamp = int(time.time())
-				# time.sleep(tomorrowTimestamp-nowTimestamp+1)
-			self.box.autoOpenBox()
-			self.equip.autoSmelt()
-			self.item.autoItemCommand()
-			if self.buyExp is True:
-				self.shop.autoBuy()
-			self.growup.growup()
+			# while self.attacker.autoAttack() is not True:
+			# 	self.run = False
+			# 	break
+			# 	# self.log.info('睡眠到明日0点...')
+			# 	# today = datetime.date.today()
+			# 	# tomorrow = today + datetime.timedelta(days=1)
+			# 	# tomorrowTimestamp = int(time.mktime(time.strptime(str(tomorrow), '%Y-%m-%d')))
+			# 	# nowTimestamp = int(time.time())
+			# 	# time.sleep(tomorrowTimestamp-nowTimestamp+1)
+			# self.box.autoOpenBox()
+			# self.equip.autoSmelt()
+			# self.item.autoItemCommand()
+			# if self.buyExp is True:
+			# 	self.shop.autoBuy()
+			# self.growup.growup()
 			self.card.getCard()
 			self.log.info('============= END USER TASK ================')
 			break
