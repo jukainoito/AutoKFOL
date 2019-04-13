@@ -14,7 +14,7 @@ class Card(object):
 	def __init__(self, user, log = None):
 		self.safeid = user.safeid
 		self.req = user.req
-		self.sm = user.getSM()
+		self.user = user
 		if log is None:
 			self.log = Logging(user.username)
 		else:
@@ -52,10 +52,11 @@ class Card(object):
 	def getCard(self):
 		self.log.info('--开始领取卡片--')
 		cardList = self.getNowCard()
+		sm = self.user.getSM()
 		if len(cardList) == 3:
 			minCardId = None
 			minCardVal = sys.maxint
-			hopeLevel = self.sm * 2 + 30
+			hopeLevel = sm * 2 + 30
 			hopeSkill = 4
 			hopeQuality = 8
 			for card in cardList:
