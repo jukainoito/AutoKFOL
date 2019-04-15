@@ -145,7 +145,7 @@ class Equip(object):
 			beforeSize = len(equipList)
 			print(equipList)
 			for equip in equipList:
-				if re.match(matchRegex, equip['name']) or (equip['hasSmAbility'] == False and equip['subMiss'] >= 3):
+				if re.match(matchRegex, equip['name']) or (equip['hasSmAbility'] == False and equip['subMiss'] >= 2):
 					self.smeltEquip(equip['id'])
 					equipList.remove(equip)
 					self.log.info('熔炼:\t' + equip['name'] + '\t' + equip['id'])

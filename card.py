@@ -55,7 +55,7 @@ class Card(object):
 		sm = self.user.getSM()
 		if len(cardList) == 3:
 			minCardId = None
-			minCardVal = sys.maxint
+			minCardVal = sys.maxsize
 			hopeLevel = sm * 2 + 30
 			hopeSkill = 4
 			hopeQuality = 8
