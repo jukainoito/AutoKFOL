@@ -5,10 +5,11 @@ from log import Logging
 from lxml import etree
 import re
 
+import constants
 
 class Growup(object):
 
-	__GROWUP_PAGE = 'https://2dkf.com/kf_growup.php'
+	__GROWUP_PAGE = constants.DOMAIN + '/kf_growup.php'
 	
 	def __init__(self, user, log = None):
 		self.user = user
@@ -16,7 +17,7 @@ class Growup(object):
 		if log is None:
 			self.log = Logging(user.username)
 		else:
-			self.log = log		
+			self.log = log
 
 	def growup(self):
 		self.user.reloadSafeid()

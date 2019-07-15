@@ -7,13 +7,15 @@ import re
 
 import time
 
+import constants
+
 class Item(object):
 
 
 
 	__ITEM_NAME_LIST = ['蕾米莉亚同人漫画','十六夜同人漫画','档案室钥匙','傲娇LOLI娇蛮音CD','消逝之药','整形优惠卷']
-	__ITEM_PAGE = 'https://2dkf.com/kf_fw_ig_mybp.php'
-	__ITEM_USE_SELL_PAGE = 'https://2dkf.com/kf_fw_ig_mybpdt.php'
+	__ITEM_PAGE = constants.DOMAIN + '/kf_fw_ig_mybp.php'
+	__ITEM_USE_SELL_PAGE = constants.DOMAIN + '/kf_fw_ig_mybpdt.php'
 
 	def __init__(self, user, useType, sellType, log = None):
 		self.safeid = user.safeid

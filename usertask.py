@@ -35,6 +35,9 @@ class UserTask(object):
 		else:
 			self.log = log
 		self.buyExp = buyExp
+		self.statistic = {
+			"username": self.username
+		}
 
 	def init(self):
 		self.user = User(self.username, self.password)
@@ -48,22 +51,14 @@ class UserTask(object):
 		self.card = Card(self.user)
 
 	def task(self):
-		while self.run:
-			while self.attacker.autoAttack() is not True:
-				self.run = False
-				break
-				# self.log.info('睡眠到明日0点...')
-				# today = datetime.date.today()
-				# tomorrow = today + datetime.timedelta(days=1)
-				# tomorrowTimestamp = int(time.mktime(time.strptime(str(tomorrow), '%Y-%m-%d')))
-				# nowTimestamp = int(time.time())
-				# time.sleep(tomorrowTimestamp-nowTimestamp+1)
-			self.box.autoOpenBox()
-			self.equip.autoSmelt()
-			self.item.autoItemCommand()
-			if self.buyExp is True:
-				self.shop.autoBuy()
-			self.growup.growup()
-			self.card.getCard()
-			self.log.info('============= END USER TASK ================')
-			break
+		stage = self.attacker.autoAttack()
+		self.statistic['stage'] = stage
+
+		self.box.autoOpenBox()
+		self.equip.autoSmelt()
+		self.item.autoItemCommand()
+		if self.buyExp is True:
+			self.shop.autoBuy()
+		self.growup.growup()
+		self.card.getCard()
+		self.log.info('============= END USER TASK ================')

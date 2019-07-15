@@ -5,10 +5,11 @@ from log import Logging
 from lxml import etree
 import re
 
+import constants
 
 class Shop(object):
 
-	__SHOP_PAGE = 'https://2dkf.com/kf_fw_ig_shop.php'
+	__SHOP_PAGE = constants.DOMAIN + '/kf_fw_ig_shop.php'
 
 	__SHOP_ITEM = {'101':'等级经验药丸', '102':'等级经验药丸（蛋）'}
 
@@ -23,7 +24,7 @@ class Shop(object):
 	def getCurMoney(self):
 		res = self.req.get(self.__SHOP_PAGE)
 		htmlTree = etree.HTML(res)
-		kfbStr = (''.join(htmlTree.xpath('//*[@id="alldiv"]/div[4]/div[1]/div[1]/a[2]/text()')))
+		kfbStr = (''.join(htmlTree.xpath('//*[@id="alldiv"]/div[3]/div[1]/div[1]/a[2]/text()')))
 		return int(re.search('^(\d*)KFB', kfbStr).group(1))
 
 	def buy(self, id):

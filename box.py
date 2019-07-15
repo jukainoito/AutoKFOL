@@ -6,12 +6,14 @@ from lxml import etree
 import re
 import time
 
+import constants
+
 
 
 class Box(object):
 
-	__BOX_PAGE = 'https://2dkf.com/kf_fw_ig_mybp.php'
-	__BOX_OPEN_PAGE = 'https://2dkf.com/kf_fw_ig_mybpdt.php'
+	__BOX_PAGE = constants.DOMAIN + '/kf_fw_ig_mybp.php'
+	__BOX_OPEN_PAGE = constants.DOMAIN + '/kf_fw_ig_mybpdt.php'
 
 	def __init__(self, user, boxType, log=None):
 		self.safeid = user.safeid
@@ -26,11 +28,12 @@ class Box(object):
 	def getBoxQuantity(self):
 		res = self.req.get(self.__BOX_PAGE)
 		htmlTree = etree.HTML(res)
+		print()
 		return [
-			int(''.join(htmlTree.xpath('//*[@id="alldiv"]/div[4]/div[2]/div[3]/table/tr[2]/td[1]/span[2]/text()'))),
-			int(''.join(htmlTree.xpath('//*[@id="alldiv"]/div[4]/div[2]/div[3]/table/tr[2]/td[2]/span[2]/text()'))),
-			int(''.join(htmlTree.xpath('//*[@id="alldiv"]/div[4]/div[2]/div[3]/table/tr[2]/td[3]/span[2]/text()'))),
-			int(''.join(htmlTree.xpath('//*[@id="alldiv"]/div[4]/div[2]/div[3]/table/tr[2]/td[4]/span[2]/text()')))
+			int(''.join(htmlTree.xpath('//*[@id="alldiv"]/div[3]/div[2]/div[3]/table/tr[2]/td[1]/span[2]/text()'))),
+			int(''.join(htmlTree.xpath('//*[@id="alldiv"]/div[3]/div[2]/div[3]/table/tr[2]/td[2]/span[2]/text()'))),
+			int(''.join(htmlTree.xpath('//*[@id="alldiv"]/div[3]/div[2]/div[3]/table/tr[2]/td[3]/span[2]/text()'))),
+			int(''.join(htmlTree.xpath('//*[@id="alldiv"]/div[3]/div[2]/div[3]/table/tr[2]/td[4]/span[2]/text()')))
 		]
 
 	def openSingleBox(self, openBoxType):

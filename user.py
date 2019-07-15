@@ -4,17 +4,18 @@ from log import Logging
 from lxml import etree
 import re
 
+import constants
 
 class User:
 
-	__LOGIN_PAGE = 'https://2dkf.com/login.php'
+	__LOGIN_PAGE = constants.DOMAIN + '/login.php'
 
-	__INDEX_PAGE = 'https://2dkf.com/'
+	__INDEX_PAGE = constants.DOMAIN + '/'
 
-	__SAFEID_PAGE = 'https://2dkf.com/kf_fw_ig_index.php'
+	__SAFEID_PAGE = constants.DOMAIN + '/kf_fw_ig_index.php'
 
 
-	__SM_PAGE = 'https://2dkf.com/kf_growup.php'
+	__SM_PAGE = constants.DOMAIN + '/kf_growup.php'
 
 	def __init__(self, username, password, log = None):
 		self.loginStatus = False
@@ -60,7 +61,7 @@ class User:
 		self.log.info('--开始获取safeid--')
 		res = self.req.get(self. __SAFEID_PAGE)
 		htmlTree = etree.HTML(res)
-		jsCode = htmlTree.xpath('//*[@id="alldiv"]/div[4]/div[2]/script[2]/text()')[0]
+		jsCode = htmlTree.xpath('//*[@id="alldiv"]/div[3]/div[2]/script[2]/text()')[0]
 		_safeid = re.search("\"safeid=(.*)\"", jsCode).group(1)
 		self.log.info('成功获取safeid: ' + _safeid)
 		return _safeid
@@ -72,7 +73,7 @@ class User:
 		self.log.info('--开始获取神秘系数--')
 		res = self.req.get(self. __SM_PAGE)
 		htmlTree = etree.HTML(res)
-		sm = ''.join(htmlTree.xpath('//*[@id="alldiv"]/div[4]/div[2]/div[1]/div[1]/text()'))
+		sm = ''.join(htmlTree.xpath('//*[@id="alldiv"]/div[3]/div[2]/div[1]/div[1]/text()'))
 		sm = re.search('.*神秘系数\s(\d*).*', sm).group(1)
 		self.log.info('--成功获取神秘系数:' + sm +'--')
 		return int(sm)

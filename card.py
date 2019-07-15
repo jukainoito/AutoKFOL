@@ -6,10 +6,12 @@ from lxml import etree
 import re
 import sys
 
+import constants
+
 
 class Card(object):
 
-	__CARD_PAGE = 'https://2dkf.com/kf_fw_ig_mycard.php'
+	__CARD_PAGE = constants.DOMAIN + '/kf_fw_ig_mycard.php'
 	
 	def __init__(self, user, log = None):
 		self.safeid = user.safeid

@@ -8,11 +8,12 @@ import datetime
 import re
 import time
 
+import constants
 
 class Attacker(object):
 
-	__LOOT_PAGE = 'https://2dkf.com/kf_fw_ig_index.php'
-	__ATTACK_PAGE = 'https://2dkf.com/kf_fw_ig_intel.php'
+	__LOOT_PAGE = constants.DOMAIN + '/kf_fw_ig_index.php'
+	__ATTACK_PAGE = constants.DOMAIN + '/kf_fw_ig_intel.php'
 
 
 
@@ -59,6 +60,7 @@ class Attacker(object):
 		return res
 
 	def attackToEnd(self):
+		stage = '0'
 		while True:
 			self.log.info('查询服务器状态')
 			lootPage = self.req.get(self.__LOOT_PAGE)
@@ -73,13 +75,16 @@ class Attacker(object):
 					break
 				m = re.finditer(r'<li((?!</li>).)*</li>', attackRes)
 				for s in m :
-					tmp = etree.HTML(s.group()).xpath('//text()')
-					self.log.info(''.join(tmp))
+					tmp = ''.join(etree.HTML(s.group()).xpath('//text()'))
+					if re.search('.*\s(\d*)\s层.*', tmp) != None:
+						stage = re.search('.*\s(\d*)\s层.*', tmp).group(1)
+					self.log.info(tmp)
 				self.log.info()
 				time.sleep(1)
 			else:
 				self.log.info('等待服务器状态变化...')
 				time.sleep(60 * 5)
+		return stage
 
 
 
@@ -87,14 +92,13 @@ class Attacker(object):
 		self.log.info('--开始自动争夺--')
 		self.log.info('检查是否已争夺')
 		attacked = self.checkAttacked()
-		ret = None
+		stage = '0'
 		if attacked:
 			self.log.info('今日已进行争夺')
 		else:
-			self.attackToEnd()
-			ret = True
+			stage = self.attackToEnd()
 		self.log.info('--自动争夺结束--')
 		self.log.info()
 		self.attackTime = datetime.datetime.now()
-		return ret
+		return stage
 

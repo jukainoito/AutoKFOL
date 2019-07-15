@@ -5,10 +5,12 @@ from log import Logging
 from lxml import etree
 import re
 
+import constants
+
 class Equip(object):
 
-	__EQUIP_PAGE = 'https://2dkf.com/kf_fw_ig_mybp.php'
-	__EQUIP_SMELT_PAGE = 'https://2dkf.com/kf_fw_ig_mybpdt.php'
+	__EQUIP_PAGE = constants.DOMAIN + '/kf_fw_ig_mybp.php'
+	__EQUIP_SMELT_PAGE = constants.DOMAIN + '/kf_fw_ig_mybpdt.php'
 
 	__EQUIP_NAME = ['普通', '幸运', '稀有', '传奇']
 
