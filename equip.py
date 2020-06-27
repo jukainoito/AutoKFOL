@@ -50,7 +50,6 @@ class Equip(object):
 		else:
 			self.log = log
 
-
 	def getEquipList(self):
 		equipListRes = self.req.get(self.__EQUIP_PAGE)
 		htmlTree = etree.HTML(equipListRes)
@@ -138,7 +137,6 @@ class Equip(object):
 		smeltRes = self.req.post(self.__EQUIP_SMELT_PAGE, data=payload)
 		return smeltRes
 
-
 	def autoSmelt(self):
 		self.log.info('--开始自动熔炼--')
 		matchRegex = self.genMatchRegex()
@@ -147,7 +145,10 @@ class Equip(object):
 			beforeSize = len(equipList)
 			print(equipList)
 			for equip in equipList:
-				if re.match(matchRegex, equip['name']) or (equip['hasSmAbility'] == False and equip['subMiss'] >= 2):
+				if equip['hasSmAbility']:
+					continue
+
+				if re.match(matchRegex, equip['name']) and equip['subMiss'] >= 2:
 					self.smeltEquip(equip['id'])
 					equipList.remove(equip)
 					self.log.info('熔炼:\t' + equip['name'] + '\t' + equip['id'])
