@@ -30,10 +30,10 @@ class Box(object):
 		htmlTree = etree.HTML(res)
 		print()
 		return [
-			int(''.join(htmlTree.xpath('//*[@id="alldiv"]/div[3]/div[2]/div[3]/table/tr[2]/td[1]/span[2]/text()'))),
-			int(''.join(htmlTree.xpath('//*[@id="alldiv"]/div[3]/div[2]/div[3]/table/tr[2]/td[2]/span[2]/text()'))),
-			int(''.join(htmlTree.xpath('//*[@id="alldiv"]/div[3]/div[2]/div[3]/table/tr[2]/td[3]/span[2]/text()'))),
-			int(''.join(htmlTree.xpath('//*[@id="alldiv"]/div[3]/div[2]/div[3]/table/tr[2]/td[4]/span[2]/text()')))
+			int(''.join(htmlTree.xpath('//*[@id="alldiv"]/div[4]/div[2]/div[3]/table/tr[2]/td[1]/span[2]/text()'))),
+			int(''.join(htmlTree.xpath('//*[@id="alldiv"]/div[4]/div[2]/div[3]/table/tr[2]/td[2]/span[2]/text()'))),
+			int(''.join(htmlTree.xpath('//*[@id="alldiv"]/div[4]/div[2]/div[3]/table/tr[2]/td[3]/span[2]/text()'))),
+			int(''.join(htmlTree.xpath('//*[@id="alldiv"]/div[4]/div[2]/div[3]/table/tr[2]/td[4]/span[2]/text()')))
 		]
 
 	def openSingleBox(self, openBoxType):

@@ -52,7 +52,7 @@ class Attacker(object):
 			return offLineBattleIsOver
 
 	def getServerStatus(self, htmlTree):
-		status = ''.join(htmlTree.xpath('//*[@id="alldiv"]/div[3]/div[2]/div[3]/table/tr[1]/td/span/text()'))
+		status = ''.join(htmlTree.xpath('//*[@id="alldiv"]/div[4]/div[2]/div[3]/table/tr[1]/td/span/text()'))
 		return status[-2:]
 	
 	def attack(self):
@@ -67,7 +67,7 @@ class Attacker(object):
 			lootPageTree = etree.HTML(lootPage)
 			serverStatus = self.getServerStatus(lootPageTree)
 			self.log.info(serverStatus)
-			if serverStatus == '空闲':
+			if serverStatus in ['空闲', '正常']:
 				self.log.info('开始争夺')
 				attackRes = self.attack()
 				#self.log.info(attackRes)

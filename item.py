@@ -35,8 +35,8 @@ class Item(object):
 	def getItemList(self):
 		res = self.req.get(self.__ITEM_PAGE)
 		htmlTree = etree.HTML(res)
-		itemIds = htmlTree.xpath('//*[@id="alldiv"]/div[3]/div[2]/div[7]/table/tr/@id')
-		itemNames = htmlTree.xpath('//*[@id="alldiv"]/div[3]/div[2]/div[7]/table/tr[(@id)]/td[3]/text()')
+		itemIds = htmlTree.xpath('//*[@id="alldiv"]/div[4]/div[2]/div[7]/table/tr/@id')
+		itemNames = htmlTree.xpath('//*[@id="alldiv"]/div[4]/div[2]/div[7]/table/tr[(@id)]/td[3]/text()')
 		itemList = []
 		for i in range(0, len(itemIds)):
 			itemList.append(dict(id=re.search('(\d*)$', itemIds[i]).group(1),

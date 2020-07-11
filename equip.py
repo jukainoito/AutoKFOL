@@ -53,7 +53,7 @@ class Equip(object):
 	def getEquipList(self):
 		equipListRes = self.req.get(self.__EQUIP_PAGE)
 		htmlTree = etree.HTML(equipListRes)
-		equipTable = htmlTree.xpath('//*[@id="alldiv"]/div[3]/div[2]/div[5]/table/tr')
+		equipTable = htmlTree.xpath('//*[@id="alldiv"]/div[4]/div[2]/div[5]/table/tr')
 		
 		equipList = []
 		for equip in equipTable:
