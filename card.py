@@ -26,7 +26,7 @@ class Card(object):
 		self.log.info('--开始获取现有卡片信息--')
 		res = self.req.get(self.__CARD_PAGE)
 		cardHtml = etree.HTML(res)
-		cardTable = cardHtml.xpath('//*[@id="alldiv"]/div[4]/div[2]/div[3]/div[2]/table/tr')
+		cardTable = cardHtml.xpath('//*[@id="alldiv"]/div[3]/div[2]/div[3]/div[2]/table/tr')
 		cardList = []
 		for card in cardTable:
 			level = ''.join(card.xpath('td[1]/div/text()'))

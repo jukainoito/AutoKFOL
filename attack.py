@@ -52,7 +52,7 @@ class Attacker(object):
 			return offLineBattleIsOver
 
 	def getServerStatus(self, htmlTree):
-		status = ''.join(htmlTree.xpath('//*[@id="alldiv"]/div[4]/div[2]/div[3]/table/tr[1]/td/span/text()'))
+		status = ''.join(htmlTree.xpath('//*[@id="alldiv"]/div[3]/div[2]/div[3]/table/tr[1]/td/span/text()'))
 		return status[-2:]
 	
 	def attack(self):

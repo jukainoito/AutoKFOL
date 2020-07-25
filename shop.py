@@ -24,7 +24,7 @@ class Shop(object):
 	def getCurMoney(self):
 		res = self.req.get(self.__SHOP_PAGE)
 		htmlTree = etree.HTML(res)
-		kfbStr = (''.join(htmlTree.xpath('//*[@id="alldiv"]/div[4]/div[1]/div[1]/a[2]/text()')))
+		kfbStr = (''.join(htmlTree.xpath('//*[@id="alldiv"]/div[3]/div[1]/div[1]/a[2]/text()')))
 		return int(re.search('^(\d*)KFB', kfbStr).group(1))
 
 	def buy(self, id):

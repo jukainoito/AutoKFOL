@@ -61,7 +61,7 @@ class User:
 		self.log.info('--开始获取safeid--')
 		res = self.req.get(self. __SAFEID_PAGE)
 		htmlTree = etree.HTML(res)
-		jsCode = htmlTree.xpath('//*[@id="alldiv"]/div[4]/div[2]/script[2]/text()')[0]
+		jsCode = htmlTree.xpath('//*[@id="alldiv"]/div[3]/div[2]/script[2]/text()')[0]
 		_safeid = re.search("\"safeid=(.*)\"", jsCode).group(1)
 		self.log.info('成功获取safeid: ' + _safeid)
 		return _safeid
@@ -73,7 +73,7 @@ class User:
 		self.log.info('--开始获取神秘系数--')
 		res = self.req.get(self. __SM_PAGE)
 		htmlTree = etree.HTML(res)
-		sm = ''.join(htmlTree.xpath('//*[@id="alldiv"]/div[4]/div[2]/div[1]/div[1]/text()'))
+		sm = ''.join(htmlTree.xpath('//*[@id="alldiv"]/div[3]/div[2]/div[1]/div[1]/text()'))
 		sm = re.search('.*神秘系数\s(\d*).*', sm).group(1)
 		self.log.info('--成功获取神秘系数:' + sm +'--')
 		return int(sm)

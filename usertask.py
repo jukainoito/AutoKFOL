@@ -57,8 +57,8 @@ class UserTask(object):
 		self.box.autoOpenBox()
 		self.equip.autoSmelt()
 		self.item.autoItemCommand()
-		if self.buyExp is True:
-			self.shop.autoBuy()
+		# if self.buyExp is True:
+		# 	self.shop.autoBuy()
 		self.growup.growup()
-		self.card.getCard()
+		# self.card.getCard()
 		self.log.info('============= END USER TASK ================')
