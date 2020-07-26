@@ -27,4 +27,4 @@ jobs:
     - name: run
       run: |
         echo '${{ secrets.CONFIG }}' > ~/kf_config.json
-        python main.py ~/kf_config.json
+        python main.py ~/kf_config.json > out.log
