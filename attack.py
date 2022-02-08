@@ -67,7 +67,8 @@ class Attacker(object):
 			lootPageTree = etree.HTML(lootPage)
 			serverStatus = self.getServerStatus(lootPageTree)
 			self.log.info(serverStatus)
-			if serverStatus in ['空闲', '正常']:
+			# if serverStatus in ['空闲', '正常']:
+			if serverStatus is not None:
 				self.log.info('开始争夺')
 				attackRes = self.attack()
 				#self.log.info(attackRes)
