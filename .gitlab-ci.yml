@@ -24,7 +24,7 @@ cache:
 
 before_script:
   - python --version  # For debugging
-  - cat /etc/pip.conf
+  - pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 #  - pip install virtualenv
 #  - virtualenv venv
 #  - source venv/bin/activate
