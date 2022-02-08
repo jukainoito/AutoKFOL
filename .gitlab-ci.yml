@@ -32,5 +32,5 @@ before_script:
 run:
   script:
     - pip install lxml requests
-    - python main.py "$KF_CONFIG"
+    - python main.py ${KF_CONFIG}
 
