@@ -23,6 +23,7 @@ cache:
     - venv/
 
 before_script:
+  - echo ${KF_CONFIG} > kf_config.json
   - python --version  # For debugging
   - pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 #  - pip install virtualenv
@@ -32,5 +33,5 @@ before_script:
 run:
   script:
     - pip install lxml requests
-    - python main.py ${KF_CONFIG}
+    - python main.py kf_config.json
 
