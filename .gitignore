@@ -1,3 +1,5 @@
 /.idea
 __pycache__
 *.pyc
+*.swp
+kf_config.json

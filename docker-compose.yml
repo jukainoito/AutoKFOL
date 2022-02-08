@@ -1,0 +1,11 @@
+version: '3.1'
+
+services:
+  kfol:
+    image: python:3.9.5-slim-buster
+    environment:
+      TZ: Asia/Shanghai
+    volumes:
+      - ./:/worker:rw
+    working_dir: /worker
+    command: bash -c "pip install lxml requests  && python main.py kf_config.json "

@@ -31,7 +31,6 @@ before_script:
 
 run:
   script:
-    - pwd
-    - cat /proc/version
-    - python --version
+    - pip install lxml requests
+    - python main.py "$KF_CONFIG"
 
