@@ -19,4 +19,4 @@ stages:          # List of stages for jobs, and their order of execution
 run-job:       # This job runs in the build stage, which runs first.
   stage: run
   script:
-    - python --version
+    - cat /proc/version
