@@ -24,9 +24,10 @@ cache:
 
 before_script:
   - python --version  # For debugging
-  - pip install virtualenv
-  - virtualenv venv
-  - source venv/bin/activate
+  - cat /etc/pip.conf
+#  - pip install virtualenv
+#  - virtualenv venv
+#  - source venv/bin/activate
 
 run:
   script:
