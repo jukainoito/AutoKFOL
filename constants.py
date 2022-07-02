@@ -1,1 +1,1 @@
-DOMAIN = 'https://bbs.9shenmi.com'
+DOMAIN = 'https://bbs.kfpromax.com'
